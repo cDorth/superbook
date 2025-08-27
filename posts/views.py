@@ -5,3 +5,5 @@ class PostListView(ListView):
     model = Post
     template_name = "posts/lista_post.html"
     context_object_name = "posts"
+
+# do carlos
