@@ -7,7 +7,7 @@
     <h1>Posts cadastrados</h1>
     <ul>
         {% for post in posts %}
-        <li>{{ post.autor }} :    {{ post.mensagem }} - {{ post.criado_em }}</li>
+        <li>{{ post.autor }} :    {{ post.mensagem }} </br>-----------------------</br> {{ post.criado_em }}</li>
         {% endfor %}
     </ul>
 </body>
