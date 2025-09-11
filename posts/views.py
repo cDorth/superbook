@@ -1,26 +1,31 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Post
+from django.shortcuts import render
 from django.views.generic import ListView
-from .forms import PostsForm
+from .models import Post
+from .forms import PostForm
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
-# Create your views here.
-def lista_posts(request):
-    posts = Post.objects.all()  # busca todos os heróis do banco
-    return render(request, "posts/lista_posts.html", {"posts": posts})
 
 class PostListView(ListView):
     model = Post
     template_name = "posts/lista_posts.html"
     context_object_name = "posts"
+    
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'posts/form_post.html'
+    success_url = reverse_lazy('lista_posts') 
+    
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'posts/form_post.html'
+    success_url = reverse_lazy('lista_posts')
+    
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'posts/confirmar_exclusao.html'
+    success_url = reverse_lazy('lista_posts')    
 
-def criar_post(request):
-    if request.method == "POST":
-        form = PostsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('lista_posts')
-    else:
-        form = PostsForm()
-
-    return render(request, "posts/form_posts.html", {"form": form})
+    
