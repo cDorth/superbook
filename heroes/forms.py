@@ -6,9 +6,9 @@ class ContatoForm(forms.Form):
     email = forms.EmailField(required=True, label="E-mail")
     mensagem = forms.CharField(widget=forms.Textarea, required=True)
     
+
 class HeroForm(forms.ModelForm):
     class Meta:
         model = Hero
         fields = ['codinome', 'nome_real', 'poder_principal', 'cidade', 'historia']
-    
-    
+

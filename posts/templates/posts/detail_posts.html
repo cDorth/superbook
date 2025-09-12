@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h1>{{ detail_post.autor }}</h1>
+        <h5>{{ detail_post.criado_em}}</h5>
+    </div>
+    <p>{{ detail_post.mensagem }}</p>
+
+    <h2>Comentários</h2>
+    <ul>
+        {% for comentario in detail_post.comentario_set.all %}
+            <li>{{ comentario.conteudo }}</li>
+        {% empty %}
+            <li>Sem comentários ainda.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Adicionar comentário</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock content %}
