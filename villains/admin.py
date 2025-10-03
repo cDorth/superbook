@@ -3,11 +3,11 @@ from .models import Villain
 
 @admin.register(Villain)
 class VillainAdmin(admin.ModelAdmin):
-    list_display = ['codinome', 'nome_real', 'poder_principal', 'cidade', 'criado_em'] # campos exibidos na listagem
-    list_filter = ['cidade'] # campo disponível para filtrar os dados
+    list_display = ['codinome', 'nome_real', 'poder_principal', 'cidade'] # campos exibidos na listagem
+    list_filter = ['cidade'] # campo disponivel para filtragem
     search_fields = ['codinome', 'nome_real', 'cidade'] # campos a serem pesquisados na barra de pesquisa
 
-    fieldsets = ( # divide em seções 
+    fieldsets = ( # divide em seções
         ('Identidade Secreta', {
             'fields': ('codinome', 'nome_real')
         }),

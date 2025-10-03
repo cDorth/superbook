@@ -1,7 +1,10 @@
 from django import forms
 from .models import Comentario
 
-class ComentarioForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
         model = Comentario
-        fields = ['id_autor', 'conteudo']
+        fields = ["autor", "conteudo"]
+        widgets = {
+            'autor': forms.Select(attrs={'class': 'form-control'})
+        }

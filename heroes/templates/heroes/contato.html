@@ -6,10 +6,8 @@
 <h2>Formulário de Contato</h2>
 
 <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Enviar</button>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 {% endblock %}
-
-<!-- Gabriel Morais -->

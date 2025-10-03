@@ -4,8 +4,7 @@ from heroes.models import Hero
 
 # Create your models here.
 class Comentario(models.Model):
-    conteudo = models.CharField(max_length=300)
-    id_autor = models.ForeignKey(Hero, on_delete=models.CASCADE)
-    id_post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    data = models.DateTimeField(auto_now_add=True)
-
+    autor = models.ForeignKey(Hero, on_delete=models.CASCADE, related_name="comments")
+    conteudo = models.TextField()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    criado_em = models.DateTimeField(auto_now_add=True)

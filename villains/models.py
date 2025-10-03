@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Villain(models.Model):
     codinome = models.CharField(max_length=50, unique=True)
     nome_real = models.CharField(max_length=100, blank=True, null=True)

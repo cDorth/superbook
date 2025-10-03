@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container mt-4">
+
+    <!-- Post em destaque -->
+    <div class="card-custom">
+      <h2>Detalhes do Post</h2>
+      <div class="d-flex align-items-start">
+        {% if post.autor.imagem %}
+          <img src="{{ post.autor.imagem.url }}" class="profile-pic" alt="">
+        {% endif %}
+        <div>
+          <strong>{{ post.autor.codinome }}</strong><br>
+          <p class="mt-2">{{ post.mensagem|linebreaksbr }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulário de comentário -->
+    <div class="form-card">
+      <h3>Deixe um comentário</h3>
+      <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="mb-3">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+              <div class="text-danger">
+                {% for error in field.errors %}
+                  <small>{{ error }}</small>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Comentar</button>
+      </form>
+    </div>
+
+    <!-- Lista de comentários -->
+    <h3 class="mb-3">Comentários</h3>
+    {% if comentarios %}
+      <div class="card-custom">
+        {% for comentario in comentarios %}
+          <div class="comment-card">
+            {% if comentario.autor.imagem %}
+              <img src="{{ comentario.autor.imagem.url }}" class="profile-pic" alt="">
+            {% endif %}
+            <div>
+              <strong>{{ comentario.autor }}</strong>
+              <small>{{ comentario.criado_em|date:"d/m/Y H:i" }}</small>
+              <div class="comment-content">
+                {{ comentario.conteudo|linebreaksbr }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted">Nenhum comentário ainda.</p>
+    {% endif %}
+
+  </div>
+{% endblock %}
