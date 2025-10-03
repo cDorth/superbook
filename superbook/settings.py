@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r6fml1(9@5bip3$*wudta+lsh!0se*!*7a%&7g@f3ivoprw^ir'
+SECRET_KEY = 'django-insecure-^2dp%k0mb&5wpn=xs!mezm32^=8md=kv(u4bat#)g6sghzsi5w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,11 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Apps criados
+    # apps
     'heroes',
     'posts',
-    'villains',
-    'comments',
 ]
 
 MIDDLEWARE = [
@@ -60,11 +58,10 @@ ROOT_URLCONF = 'superbook.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'superbook' / 'templates'],  # <-- adicionamos a pasta global
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
