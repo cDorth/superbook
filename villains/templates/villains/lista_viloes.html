@@ -1,0 +1,26 @@
+{% extends 'base_villain.html' %}
+{% block title %}Lista de Vilões{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Vilões cadastrados</h2>
+    <a href="{% url 'criar_vilao' %}" class="btn btn-success mb-3">Novo Vilão</a>
+    <div class="row">
+      {% for vilao in viloes %}
+        <div class="col-md-4">
+          <div class="card-custom">
+            <h5 class="card-title">{{ vilao.codinome }}</h5>
+            <p class="card-text">{{ vilao.poder_principal }}</p>
+            <small class="text-muted">{{ vilao.cidade }}</small>
+            <div class="mt-2">
+              <a href="{% url 'editar_vilao' vilao.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>
+              <a href="{% url 'excluir_vilao' vilao.pk %}" class="btn btn-sm btn-outline-danger">Excluir</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>Nenhum herói encontrado.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

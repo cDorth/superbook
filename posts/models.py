@@ -11,7 +11,7 @@ class Post(models.Model):
 
 
 class Like(models.Model):
-    heroi = models.ForeignKey("heroes.Hero", on_delete=models.CASCADE)
+    heroi = models.ForeignKey(Hero, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     criado_em = models.DateTimeField(auto_now_add=True)
 
